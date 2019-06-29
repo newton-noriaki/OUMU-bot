@@ -9,13 +9,20 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
+####TODO#########
+
+import os
+from os.path import join, dirname
+from dotenv import load_dotenv
+
 
 app = Flask(__name__)
+load_dotenv(join(dirname(__file__),'.env'))
 
-line_bot_api = LineBotApi('DHmdGYVRyPrkqL6desGoDJY4M75mkVBw+yg/XVDTAtdpTrJ89LWe5UIhvGjR4eKzL3Nd1u6UQ8mnzSZxKjvpma17xDGc/S8ZfvAtGwujpK+gqsDTybFQL8TxXTbm51WyVS2uLAAV7omWXJ3dGVgG+QdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('0d2b594b0e82aba96990d46980c45cf8')
+line_bot_api = LineBotApi(os.environ.get('linebot_token'))
+handler = WebhookHandler(os.environ.get('linebot_secret'))
 
-
+####TODO##########
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
