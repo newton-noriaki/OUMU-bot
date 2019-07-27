@@ -44,10 +44,23 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    # -*- coding: utf-8 -*-
+    import pya3rt
+
+    apikey = "DZZEqN4NXwlVu2ONNpRb0N7aMAu8lx2S"
+    client = pya3rt.TalkClient(apikey)
+
+
+    word = event.message.text
+    res = client.talk(word)
+    #print(res['results'][0]['reply'])
+
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=res['results'][0]['reply']))
 
 
 if __name__ == "__main__":
+    port = int(os.getenv("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
     app.run()
