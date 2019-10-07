@@ -1,3 +1,6 @@
 .DS_Store
 .idea
 .env
+requirements.txt
+runtime.txt
+Procfile
