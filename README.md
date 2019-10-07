@@ -1,3 +1,3 @@
 Linebot
 ##Description
-おうむ返ししまーす
+pya3rtのAIを借りてLINEで返事を返すようにしています。
